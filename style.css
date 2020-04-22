@@ -1,0 +1,22 @@
+.gameboard {
+    display: grid;
+    height: 40vh;
+    width: 20vw;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    margin: 25vh auto;
+    justify-items: center;
+    outline: 3px solid white;
+    outline-offset: -1px;
+}
+
+.square {
+    display: flex;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+}
+
+span {
+    margin: auto;
+}
