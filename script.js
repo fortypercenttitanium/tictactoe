@@ -1,40 +1,73 @@
-const Gameboard = (() => {
+const Gameboard = ((container) => {
+
     const square = {
         mark: ''
     }
-    let board = [];
-    for (let i = 1; i <= 9; i++) {
-        board.push(square)
+
+    const board = [];
+
+    const newMarker = (mark, index) => {
+        board[index] = {mark}
+        render()
+        console.log(board)
     }
-    const render = board.forEach(square => {
-        const child = document.createElement('div');
-        child.className = 'square';
-        child.innerHTML = `<span>${square.mark}</span>`
-        document.querySelector('.gameboard').appendChild(child)
-    });
+
+    // page load
+    const init = () => {
+        for (let count = 1; count <= 9; count++) {
+                board.push(square)
+            }
+        render()
+    }
+
+    // DOM grabbing module
+    const DOM = {
+        getSquares: function() {
+            return container.querySelectorAll('.square')
+        },
+        newSquare: function(html) {
+            const square = document.createElement('div')
+            square.className = 'square' 
+            square.innerHTML = html;
+            return square;
+        },
+        newSquareInner: function(mark) {
+            return `<span>${mark}</span>`
+        }
+    }
+
+    const render = () => {
+        // clear the board
+        DOM.getSquares().forEach(square => {
+            container.removeChild(square)
+        })
+        // repopulate the board with new squares
+        board.forEach(square => {
+            container.appendChild(DOM.newSquare(DOM.newSquareInner(square.mark)))
+            console.log(square.mark)
+        });
+    }
+
+    // make these available to other modules
     return {
-        board,
-        render
+        init,
+        newMarker
     };
+
+})(document.querySelector('.gameboard'))
+
+const Controller = (() => {
+    const DOM = {
+        setupWindow: document.querySelector('.setup'),
+    }
+
+    const newPlayer = (marker, type) => {
+        return {
+            marker, type
+        }
+    }
+
+    const player1 = newPlayer('X', 'human');
 })()
 
-const Player = (marker) => {
-    const markSquare = (e) => {
-        e.target.innerHTML = '<span>' + marker + '</span>';
-    }
-    return {
-        markSquare
-    };
-}
-
-const playerX = Player('X')
-const playerO = Player('O')
-
-const squares = Array.from(document.querySelectorAll('.square'));
-
-squares.
-    forEach(square => {
-        addEventListener('click', e => {
-            playerX.markSquare(e);
-        })
-    })
+//console.log(player1, player2)
