@@ -116,3 +116,32 @@ button, .selection {
     margin: 2rem 0 -2rem;
     padding: 0.9rem;
 }
+
+@media screen and (max-width: 800px) {
+    html {
+        font-size: 0.7rem;
+    }
+    
+    h2 {
+        font-size: 0.9rem;
+    }
+
+    .setup {
+        width: 100%;
+    }
+
+    .selection {
+        font-size: 0.7rem;
+    }
+
+    button {
+        font-size: 0.8rem;
+    }
+
+    .gameboard {
+        height: 30vh;
+        width: 30vh;
+        outline: 5px solid #FCF7E8;
+        outline-offset: -2px;
+    }
+}
