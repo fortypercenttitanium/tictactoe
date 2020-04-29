@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -13,9 +14,26 @@
     </header>
 
     <div class='setup'>
-        
+        <div class="chooseplayertype">
+            <h2>Player 1 (X):</h2>
+            <div class="selecttype">
+                <div class='selection human one'>Human</div>
+                <div class='selection ai one'>AI</div>
+            </div>
+        </div>
+        <div class="chooseplayertype">
+            <h2>Player 2 (O):</h2>
+            <div class="selecttype">
+                <div class='selection human two'>Human</div>
+                <div class='selection ai two'>AI</div>
+            </div>
+        </div>
+        <div class="startbuttondiv">
+            <button class="startgame">Start Game</button>
+        </div>
     </div>
-
+    <div class="turn"></div>
+    <div class="winner"></div>
     <div class='gameboard'></div>
 
     <script src='script.js'></script>
